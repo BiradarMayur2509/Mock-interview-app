@@ -47,11 +47,24 @@ function saveAnswer() {
 
 function submitInterview() {
   saveAnswer();
-  console.log("Interview submitted!");
-  console.log("Your Answers:");
-  questions.forEach((q, i) => {
-    console.log(`${i + 1}. ${q}`);
-    console.log(`Answer: ${answers[i]}\n`);
+  
+  // hide question and buttons 
+  document.getElementById("question-box").style.display = "none";
+  document.querySelector(".btn-group").style.display = "none";
+
+  // show result box
+  const resultBox = document.getElementById("result-box");
+  const results = document.getElementById("results");
+
+  resultBox.style.display = "block";
+  results.innerHTML = ""; // Clear previous if any
+
+
+   questions.forEach((q, i) => {
+    const qDiv = document.createElement("div");
+    qDiv.innerHTML = `<p><strong>Q${i + 1}:</strong> ${q}</p>
+                      <p><strong>Your Answer:</strong> ${answers[i] || "No answer given."}</p>
+                      <hr/>`;
+    results.appendChild(qDiv);
   });
-  alert("Thank you! Your interview has been submitted.");
 }
