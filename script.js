@@ -13,6 +13,11 @@ let answers = new Array(questions.length).fill("");
 
 // Load first question
 window.onload = () => {
+  const saveAnswer = localStorage.getItem("interviewAnswers")
+
+  if(savedAnswer) {
+    answers = JSON.parse(savedAnswer);
+  }
   loadQuestion();
 };
 
@@ -43,6 +48,9 @@ function prevQuestion() {
 function saveAnswer() {
   const answerBox = document.getElementById("answer");
   answers[currentQuestionIndex] = answerBox.value;
+
+  // save all answers to localstorage 
+  localStorage.setItem("interviewAnswers", JSON.stringify(answers));
 }
 
 function submitInterview() {
