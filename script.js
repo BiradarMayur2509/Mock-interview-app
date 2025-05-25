@@ -13,7 +13,7 @@ let answers = new Array(questions.length).fill("");
 
 // Load first question
 window.onload = () => {
-  const saveAnswer = localStorage.getItem("interviewAnswers")
+  const savedAnswer = localStorage.getItem("interviewAnswers")
 
   if(savedAnswer) {
     answers = JSON.parse(savedAnswer);
