@@ -23,10 +23,13 @@ window.onload = () => {
 
 function loadQuestion() {
   const questionText = document.getElementById("question-text");
+  const progressText = document.getElementById("progress-text");
   const answerBox = document.getElementById("answer");
 
   questionText.textContent = questions[currentQuestionIndex];
   answerBox.value = answers[currentQuestionIndex];
+  progressText.textContent = `Question ${currentQuestionIndex + 1 } of ${questions.length}`;
+
 }
 
 function nextQuestion() {
